@@ -4,6 +4,7 @@ import com.example.itemmanagement.Entity.RefreshToken;
 import com.example.itemmanagement.Entity.User;
 import com.example.itemmanagement.Repository.RefreshTokenRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
@@ -38,5 +39,11 @@ public class RefreshTokenService {
             throw new RuntimeException("Refresh token has expired");
         }
         return refreshToken; // return the object-which contains token,user,expiry date.-whoever calls this method, it returns the refreshToken entity to caller
+    }
+
+    //delete the refresh token when the user clicks logout
+    @Transactional
+    public void  deleteRefreshToken(String token){
+        refreshTokenRepository.deleteByToken(token);
     }
 }

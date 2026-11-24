@@ -17,11 +17,11 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception{
         httpSecurity
-                .csrf(csrf -> csrf.ignoringRequestMatchers("/auth/register", "/auth/login", "/auth/refresh"))
+                .csrf(csrf -> csrf.ignoringRequestMatchers("/auth/register", "/auth/login", "/auth/refresh", "/auth/logout"))
                 .oauth2ResourceServer(oauth2 -> oauth2.jwt(Customizer.withDefaults()))
                 .cors(Customizer.withDefaults())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/auth/register", "/auth/login", "/auth/refresh").permitAll()
+                        .requestMatchers("/auth/register", "/auth/login", "/auth/refresh", "/auth/logout").permitAll()
                 .anyRequest().authenticated());
         return httpSecurity.build(); // httpSecurity.build() - builds the configured Security filter chain
     }

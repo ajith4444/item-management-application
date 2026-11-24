@@ -41,4 +41,9 @@ public class UserController {
         return authService.refreshAccessToken(refreshTokenRequestDTO.getRefreshToken());
     }
 
+    @PostMapping("/logout")
+    public void logout(@RequestBody RefreshTokenRequestDTO refreshTokenRequestDTO){
+         authService.logout(refreshTokenRequestDTO.getRefreshToken());
+    }
+
 }

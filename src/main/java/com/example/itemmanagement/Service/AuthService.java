@@ -46,4 +46,9 @@ public class AuthService {
         String newAccessToken = jwtService.generateToken(username);
         return new RefreshTokenResponseDTO(newAccessToken);
     }
+
+    // handle the logout request by delegating refresh token deletion to the RefreshTokenService
+    public void logout(String token){
+        refreshTokenService.deleteRefreshToken(token);
+    }
 }
