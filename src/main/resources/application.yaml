@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: item-management
+  datasource:
+    url: "jdbc:mysql://localhost:3306/item_management"
+    username: "root"
+    password: "password123"
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+logging:
+  level:
+    root: info
+    org.springframework.security : DEBUG
+
+jwt:
+  secret : yxEEf6vy/UBfLM6i7HcAzlVfLMhy5/1JjMwsZTOxxeM=
